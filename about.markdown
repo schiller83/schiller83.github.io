@@ -4,6 +4,6 @@ title: About
 permalink: /about/
 ---
 
-I'm an engineer, coder and tech enthusiast with a particular interest in cryptology, AI and all things security.
+I'm an engineer and coder looking at cryptology, espionage and security policy through a technical lens – from Enigma and the Cold War to today's cyber conflicts.
 
-I don't post on a regular schedule. If these topics interest you, check back from time to time or subscribe via RSS.
+Posts appear irregularly. If these topics interest you, check back now and then or subscribe via RSS.

@@ -1,0 +1,127 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+// ---------------------------------------------------------------
+// "Dossier"-Palette: Graphit-Nacht, vergilbtes Papier,
+// Enigma-Lampen-Bernstein und Stempel-Rot.
+// ---------------------------------------------------------------
+$background-color: #14171c;
+$text-color:       #d9d5c7;
+$brand-color:      #e3a33b;   // Bernstein (Links)
+$accent-color:     #c23b2e;   // "TOP SECRET"-Rot
+$phosphor-color:   #7fd18b;   // Terminal-Grün (Inline-Code)
+
+$grey-color:       #8a8f98;
+$grey-color-light: #2a2f37;   // Linien, Rahmen
+$grey-color-dark:  #b5b1a4;
+
+$typewriter-font: "Special Elite", "Courier New", Courier, monospace;
+$mono-font:       "IBM Plex Mono", Menlo, Consolas, monospace;
+
+@import "minima";
+
+// --- Header ------------------------------------------------------
+.site-header {
+  border-top: 5px solid $accent-color;
+  border-bottom: 1px solid $grey-color-light;
+  background-color: darken($background-color, 2%);
+}
+
+.site-title {
+  font-family: $typewriter-font;
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: 2px;
+  &,
+  &:visited { color: $text-color; }
+  &:hover   { color: $brand-color; text-decoration: none; }
+}
+
+.site-nav {
+  font-family: $mono-font;
+  font-size: 14px;
+  .page-link { color: $grey-color-dark; }
+  .page-link:hover { color: $brand-color; }
+  @include media-query($on-palm) {
+    background-color: $background-color;
+    .menu-icon > svg { fill: $grey-color-dark; }
+  }
+}
+
+// --- Links -------------------------------------------------------
+a {
+  &:visited { color: darken($brand-color, 10%); }
+  &:hover   { color: lighten($brand-color, 15%); }
+}
+
+// --- Überschriften & Meta ---------------------------------------
+h1, h2, h3, h4 { color: lighten($text-color, 6%); }
+
+.post-title, .page-heading, .post-list-heading {
+  font-family: $typewriter-font;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.post-link,
+.post-link:visited { color: $text-color; }
+.post-link:hover   { color: $brand-color; }
+
+.post-meta {
+  font-family: $mono-font;
+  color: $grey-color;
+}
+
+blockquote {
+  color: $grey-color-dark;
+  border-left-color: $accent-color;
+}
+
+hr { border: 0; border-top: 1px solid $grey-color-light; }
+
+// --- Code --------------------------------------------------------
+pre, code {
+  font-family: $mono-font;
+  background-color: #0d1013;
+  border-color: $grey-color-light;
+}
+code { color: $phosphor-color; }
+pre code { color: $text-color; }
+
+.highlight,
+.highlighter-rouge .highlight { background: #0d1013; }
+
+.highlight {
+  .c, .cm, .c1, .cs, .cp { color: #6b7280; }            // Kommentare
+  .k, .kc, .kd, .kp, .kr, .kt, .kn { color: #e3a33b; }  // Keywords
+  .o, .ow { color: $text-color; }
+  .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1, .sr, .ss { color: #7fd18b; } // Strings
+  .m, .mf, .mh, .mi, .mo, .il { color: #d98bd1; }       // Zahlen
+  .nf, .fm, .nc, .nn, .ne { color: #6cb6ff; }           // Funktionen, Klassen
+  .na, .nb, .bp, .no, .nv, .vc, .vg, .vi { color: #e0c48a; }
+  .nt { color: #e06c5c; }
+  .err { color: #ff8b80; background-color: transparent; }
+  .gd { color: #ff8b80; background-color: #3a1d1d; }
+  .gi { color: #7fd18b; background-color: #1d3a24; }
+}
+
+// --- Tabellen ----------------------------------------------------
+table {
+  color: $text-color;
+  border-color: $grey-color-light;
+  tr:nth-child(even) { background-color: lighten($background-color, 3%); }
+  th { background-color: lighten($background-color, 6%); border-color: $grey-color-light; }
+  td { border-color: $grey-color-light; }
+}
+
+// --- Footer ------------------------------------------------------
+.site-footer {
+  border-top-color: $grey-color-light;
+  font-family: $mono-font;
+  font-size: 14px;
+}
+.footer-heading { font-family: $typewriter-font; color: $text-color; }
+.svg-icon { fill: $grey-color; }
+
+::selection { background: $brand-color; color: $background-color; }
