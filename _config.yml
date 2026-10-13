@@ -18,9 +18,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: TechVault
+title: Station X
 email: 
-description: Technology, cryptology and other interesting stuff!
+description: Technology, cryptology, security policy and other interesting stuff!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://schiller83.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  schiller83
