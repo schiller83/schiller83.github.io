@@ -3,63 +3,66 @@
 ---
 
 // ---------------------------------------------------------------
-// "Deep Space"-Palette: Nachthimmel-Blau, Sternenlicht-Weiß,
-// Nebel-Cyan und Raketen-Orange.
+// "Consulting"-Palette: hell und ruhig, mit dezenten SGC-Farben
+// (Dunkelblau, Mittelblau, Petrol) als Akzente.
 // ---------------------------------------------------------------
-$background-color: #0a0e1a;
-$text-color:       #dfe6f3;   // Sternenlicht
-$brand-color:      #5ec8f2;   // Nebel-Cyan (Links)
-$accent-color:     #ff7a3d;   // Raketen-Orange
-$code-color:       #b9a6ff;   // Nebel-Violett (Inline-Code)
+$sgc-dark-blue:   #1B3A5C;
+$sgc-mid-blue:    #2E6BA8;
+$sgc-petrol:      #0F8B85;
+$sgc-petrol-light:#3FB5AE;
+$sgc-anthracite:  #2C2C2A;
+$sgc-light-grey:  #B2B2B2;
 
-$grey-color:       #8590a6;
-$grey-color-light: #1f2638;   // Linien, Rahmen
-$grey-color-dark:  #aab4c8;
+$background-color: #ffffff;
+$surface-color:    #f5f8fa;   // Code, Tabellenköpfe, Footer
+$text-color:       $sgc-anthracite;
+$brand-color:      $sgc-mid-blue;   // Links
+$accent-color:     $sgc-petrol;     // Akzentlinien
 
-$base-font-family: "Space Grotesk", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-$title-font:       "Michroma", "Space Grotesk", Helvetica, Arial, sans-serif;
-$mono-font:        "IBM Plex Mono", Menlo, Consolas, monospace;
+$grey-color:       #6b7480;
+$grey-color-light: #e3e8ee;   // Linien, Rahmen
+$grey-color-dark:  #4a525c;
+
+$base-font-family: "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$heading-font:     "Plus Jakarta Sans", "Inter", Helvetica, Arial, sans-serif;
+$mono-font:        "JetBrains Mono", Menlo, Consolas, monospace;
+$base-line-height: 1.65;
 
 @import "minima";
 
-// --- Sternenhimmel -----------------------------------------------
-body {
-  background-color: $background-color;
-  background-image:
-    radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,.85), transparent 60%),
-    radial-gradient(1.5px 1.5px at 140px 80px, rgba(255,255,255,.6), transparent 60%),
-    radial-gradient(1.5px 1.5px at 260px 160px, rgba(190,220,255,.75), transparent 60%),
-    radial-gradient(1.5px 1.5px at 330px 40px, rgba(255,255,255,.55), transparent 60%),
-    radial-gradient(1.5px 1.5px at 90px 210px, rgba(255,230,200,.6), transparent 60%),
-    radial-gradient(ellipse at 85% -10%, rgba(94,200,242,.10), transparent 55%),
-    radial-gradient(ellipse at -10% 110%, rgba(185,166,255,.08), transparent 55%);
-  background-size: 380px 260px, 380px 260px, 380px 260px, 380px 260px, 380px 260px, 100% 100%, 100% 100%;
-  background-attachment: fixed;
-}
+body { -webkit-font-smoothing: antialiased; }
 
 // --- Header ------------------------------------------------------
 .site-header {
-  border-top: 3px solid $accent-color;
+  border-top: 4px solid $sgc-dark-blue;
   border-bottom: 1px solid $grey-color-light;
-  background-color: rgba(6, 9, 18, .85);
+  background-color: $background-color;
+  position: relative;
+  &::after {               // feine Petrol-Linie unter dem dunkelblauen Balken
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, $sgc-petrol, $sgc-petrol-light);
+  }
 }
 
 .site-title {
-  font-family: $title-font;
-  font-weight: 400;
+  font-family: $heading-font;
+  font-weight: 800;
   font-size: 24px;
-  letter-spacing: 4px;
+  letter-spacing: -0.5px;
   line-height: 56px;
   &,
-  &:visited { color: $text-color; }
-  &:hover   { color: $brand-color; text-decoration: none; }
+  &:visited { color: $sgc-dark-blue; }
+  &:hover   { color: $sgc-petrol; text-decoration: none; }
 }
 
 .site-nav {
-  font-family: $mono-font;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 15px;
   .page-link { color: $grey-color-dark; }
-  .page-link:hover { color: $brand-color; }
+  .page-link:hover { color: $sgc-petrol; text-decoration: none; }
   @include media-query($on-palm) {
     background-color: $background-color;
     .menu-icon > svg { fill: $grey-color-dark; }
@@ -68,80 +71,107 @@ body {
 
 // --- Links -------------------------------------------------------
 a {
-  &:visited { color: darken($brand-color, 10%); }
-  &:hover   { color: lighten($brand-color, 15%); }
+  text-underline-offset: 3px;
+  &:visited { color: darken($brand-color, 8%); }
+  &:hover   { color: $sgc-petrol; }
 }
 
 // --- Überschriften & Meta ---------------------------------------
-h1, h2, h3, h4 { color: #ffffff; font-weight: 600; }
+h1, h2, h3, h4, h5 {
+  font-family: $heading-font;
+  font-weight: 700;
+  color: $sgc-dark-blue;
+  letter-spacing: -0.3px;
+}
 
 .post-title, .page-heading, .post-list-heading {
-  font-family: $title-font;
-  font-weight: 400;
-  letter-spacing: 1.5px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: $sgc-dark-blue;
+  &::after {               // Petrol-Akzentlinie wie im SGC-Design
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin-top: 12px;
+    background-color: $sgc-petrol;
+    border-radius: 2px;
+  }
 }
 
 .post-link,
-.post-link:visited { color: $text-color; }
-.post-link:hover   { color: $brand-color; }
+.post-link:visited { color: $sgc-dark-blue; font-weight: 700; }
+.post-link:hover   { color: $sgc-petrol; text-decoration: none; }
+
+.post-list > li {
+  padding-bottom: $spacing-unit * 0.6;
+  border-bottom: 1px solid $grey-color-light;
+}
 
 .post-meta {
-  font-family: $mono-font;
   color: $grey-color;
+  font-size: 13px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
 }
 
 blockquote {
   color: $grey-color-dark;
-  border-left-color: $accent-color;
+  border-left: 4px solid $sgc-petrol-light;
+  background-color: rgba($sgc-petrol-light, .08);
+  padding: 10px 16px;
+  letter-spacing: 0;
+  font-style: normal;
+  border-radius: 0 6px 6px 0;
 }
 
 hr { border: 0; border-top: 1px solid $grey-color-light; }
 
+::marker { color: $sgc-petrol; }
+
 // --- Code --------------------------------------------------------
 pre, code {
   font-family: $mono-font;
-  background-color: #060912;
+  font-size: 14px;
+  background-color: $surface-color;
   border-color: $grey-color-light;
+  border-radius: 6px;
 }
-code { color: $code-color; }
+code { color: $sgc-dark-blue; }
 pre code { color: $text-color; }
 
 .highlight,
-.highlighter-rouge .highlight { background: #060912; }
+.highlighter-rouge .highlight { background: $surface-color; }
 
 .highlight {
-  .c, .cm, .c1, .cs, .cp { color: #5f6b85; }            // Kommentare
-  .k, .kc, .kd, .kp, .kr, .kt, .kn { color: #ff9b66; }  // Keywords
-  .o, .ow { color: $text-color; }
-  .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1, .sr, .ss { color: #8fe3b0; } // Strings
-  .m, .mf, .mh, .mi, .mo, .il { color: #b9a6ff; }       // Zahlen
-  .nf, .fm, .nc, .nn, .ne { color: #5ec8f2; }           // Funktionen, Klassen
-  .na, .nb, .bp, .no, .nv, .vc, .vg, .vi { color: #ffd479; }
-  .nt { color: #ff7a8a; }
-  .err { color: #ff8b80; background-color: transparent; }
-  .gd { color: #ff8b80; background-color: #3a1d24; }
-  .gi { color: #8fe3b0; background-color: #16332a; }
+  .c, .cm, .c1, .cs, .cp { color: #8a939e; font-style: italic; }
+  .k, .kc, .kd, .kp, .kr, .kt, .kn { color: $sgc-mid-blue; font-weight: 600; }
+  .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1, .sr, .ss { color: $sgc-petrol; }
+  .m, .mf, .mh, .mi, .mo, .il { color: #b0531f; }
+  .nf, .fm, .nc, .nn, .ne { color: $sgc-dark-blue; font-weight: 600; }
 }
 
 // --- Tabellen ----------------------------------------------------
 table {
   color: $text-color;
   border-color: $grey-color-light;
-  tr:nth-child(even) { background-color: rgba(255,255,255,.03); }
-  th { background-color: rgba(255,255,255,.06); border-color: $grey-color-light; }
+  tr:nth-child(even) { background-color: $surface-color; }
+  th {
+    background-color: $sgc-dark-blue;
+    color: #ffffff;
+    border-color: $sgc-dark-blue;
+  }
   td { border-color: $grey-color-light; }
 }
 
 // --- Footer ------------------------------------------------------
 .site-footer {
-  border-top-color: $grey-color-light;
-  font-family: $mono-font;
+  border-top: 3px solid $sgc-petrol;
+  background-color: $surface-color;
   font-size: 14px;
-  background-color: rgba(6, 9, 18, .6);
 }
-.footer-heading { font-family: $title-font; font-size: 16px; letter-spacing: 2px; color: $text-color; }
+.footer-heading { font-family: $heading-font; font-weight: 700; color: $sgc-dark-blue; }
 .svg-icon { fill: $grey-color; }
 
-::selection { background: $brand-color; color: $background-color; }
+::selection { background: rgba($sgc-petrol-light, .35); }
